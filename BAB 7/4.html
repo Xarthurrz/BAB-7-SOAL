@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table align="center">
+        <tr>
+            <th>Nama</th>
+            <th>Gender</th>
+            <th>Pekerjaan</th>
+            <th>foto</th>
+        </tr>
+        <tbody id="data"></tbody>
+    </table>
+    <script type="text/javascript">
+        var n = prompt("Masukan nama");
+        var g = prompt("Masukan gender");
+        var p = prompt("masukan pekerjaan")
+        var f = prompt("Masukan link foto")
+        var tampilkonsumenN = new tampilkonsumen();
+        tampilkonsumenN.setNama(n)
+        tampilkonsumenN.setgender(g)
+        tampilkonsumenN.setpekerjaan(p)
+        tampilkonsumenN.setfoto(f)
+
+        let menu = document.getElementById('data');
+        let isi = '';
+        isi += '<tr><td>' + tampilkonsumenN.getNama() + '</td>' + '<td>' + tampilkonsumenN.getgender() + '</td>' +
+            '<td>' + tampilkonsumenN.getpekerjaan() + '</td>' + '<td>' + tampilkonsumenN.getfoto() + '</td></tr>'
+        menu.innerHTML = isi;
+
+        function tampilkonsumen() {
+            this.nama;
+            this.getNama = function () {
+                return this.nama;
+            }
+            this.setNama = function (nama) {
+                this.nama = nama;
+            }
+            this.gender;
+            this.getgender = function () {
+                return this.gender;
+            }
+            this.setgender = function (gender) {
+                this.gender = gender;
+            }
+            this.pekerjaan;
+            this.getpekerjaan = function () {
+                return this.pekerjaan;
+            }
+            this.setpekerjaan = function (pekerjaan) {
+                this.pekerjaan = pekerjaan;
+            }
+            this.foto;
+            this.getfoto = function () {
+                return `<img src="${this.foto}" width="100" height="100">`;
+            }
+            this.setfoto = function (foto) {
+                this.foto = foto;
+            }
+
+        }
+        var setIdentity = () => {
+            window.location.reload();
+        };
+    </script>
+</body>
+
+</html>

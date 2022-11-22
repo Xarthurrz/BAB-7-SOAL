@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function Pegawai(nama, telpon) {
+            this.nama = nama;
+            this.telpon = telpon;
+            this.getN = () => {
+                return this.nama;
+            }
+            this.getT = () => {
+                return this.telpon;
+            }
+        }
+        var pegawai1 = new Pegawai("Lucifer", "08xxxxxx");
+        var pegawai2 = new Pegawai("Michael", "08xxxxxx");
+        var pegawai3 = new Pegawai("Dermigeuos", "0xxxxxx");
+        document.write("Pegawai 1 <br>" + pegawai1.getN(), "", pegawai1.getT(), "<br>")
+        document.write("Pegawai 2 <br>" + pegawai2.getN(), "", pegawai2.getT(), "<br>")
+        document.write("Pegawai 3 <br>" + pegawai3.getN(), "", pegawai3.getT(), "<br>")
+    </script>
+
+</body>
+
+</html>

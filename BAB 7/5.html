@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<div style="text-align:center">
+    <script type="text/javascript">
+        function Pegawai(nama, telpon) {
+            this.nama = nama;
+            this.telpon = telpon;
+            this.gaji = "";
+            this.setkenaikangaji = function () {
+                gaji = gaji + (gaji * 15 / 100);
+            }
+        this.setGaji = (gaji) => {
+            this.gaji = "Rp. " + gaji;
+        }
+        this.getGaji = () => {
+            return this.gaji;
+        }
+        this.getNama = () => {
+            return this.nama;
+        }
+        this.getTelpon = () => {
+            return this.telpon;
+        }
+    };
+
+        function Bawahan(nama, telpon) {
+            Pegawai.call(this, nama, telpon);
+        }
+
+        function Manager(nama, telpon) {
+            Pegawai.call(this, nama, telpon)
+        }
+
+        var bawahan1 = new Bawahan("Lucifer", "08xxxxx");
+        var manager1 = new Manager("Akbar Tolib", "08xxxxxx");
+            manager1.setGaji(37000000);
+            bawahan1.setGaji(1500000);
+
+        document.write(bawahan1.getNama(), bawahan1.getTelpon(), "<br>", bawahan1.getGaji(), "<br>")
+        document.write(manager1.getNama(), manager1.getTelpon(), "<br>", manager1.getGaji(), "<br>")
+    </script>
+</div>
+</body>
+
+</html>

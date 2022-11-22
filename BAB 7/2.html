@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        const FORMATS = {
+            DuaBelasJam: 12,
+            DuaPuluhEmpatJam: 24
+        }
+
+        class Clock {
+            format = FORMATS.DuaPuluhEmpatJam;
+
+            constructor(clockDivId) {
+                this.clockDivId = clockDivId;
+
+                this.clockInterval = setInterval(() => {
+                    document.getElementById(clockDivId).innerHTML = this.getCurrentTime().format(this
+                        .format);
+                }, 500)
+            }
+
+            getCurrentTime() {
+                let today = new Date();
+                return new Time(today.getHours(), today.getMinutes(), today.getSeconds());
+            }
+
+            switchTo12JamFormat() {
+                this.format = FORMATS.DuaBelasJam
+            }
+
+            switchTo24JamFormat() {
+                this.format = FORMATS.DuaPuluhEmpatJam
+            }
+
+            destroy() {
+                clearInterval(this.clockInterval);
+            }
+
+        }
+
+        class Time {
+
+            constructor(hours, minutes, seconds) {
+                this.hours = hours;
+                this.minutes = minutes;
+                this.seconds = seconds;
+            }
+
+            format(type) {
+                switch (type) {
+                    case FORMATS.DuaPuluhEmpatJam: {
+                        return this.print(this.hours)
+                    }
+                    case FORMATS.DuaBelasJam: {
+                        let tag = this.hours >= 12 ? 'p.m' : 'a.m';
+                        let hours = this.hours % 12;
+                        if (hours == 0) {
+                            hours = 12;
+                        }
+                        return this.print(hours) + ' ' + tag;
+                    }
+
+                }
+
+            }
+            to2Digits(number) {
+                return number < 10 ? '0' + number : '' + number;
+            }
+
+            print(hours) {
+                return this.to2Digits(hours) + ':' + this.to2Digits(this.minutes) + ':' + this.to2Digits(this
+                    .seconds);
+            }
+
+        }
+
+        let clock = new Clock("clock");
+    </script>
+</head>
+
+<body>
+    <div style="text-align:center">
+    <div id="clock"></div>
+    <button onclick="clock.switchTo12JamFormat()">12 Jam Format</button>
+    <button onclick="clock.switchTo24JamFormat();">24 Jam Format</button>
+</div>
+</body>
+
+</html>
